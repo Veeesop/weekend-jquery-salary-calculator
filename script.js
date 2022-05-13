@@ -1,3 +1,4 @@
+let totalAnnual = 0;
 let totalMonthlyPayout;
 let employeeList = [];
 
@@ -49,8 +50,11 @@ function clearInputs() {
 
 function totalMonthly(salaries) {
   for (salary of salaries) {
+    totalAnnual += salary.annualSalary;
     console.log(salary.annualSalary);
   }
+  totalMonthlyPayout = totalAnnual / 12;
+  $(".totalMonthlyAmount").text(`${totalMonthlyPayout}`);
 }
 
 $(document).ready(function () {
