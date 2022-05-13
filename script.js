@@ -7,18 +7,20 @@ function getInputs() {
     lastName: $("#lastName").val(),
     employeeId: $("#employeeId").val(),
     title: $("#title").val(),
-    annualSalary: Number($("#annualSalary").val()),
+    annualSalary: Math.floor(Number($("#annualSalary").val())),
   };
-  console.log(newEmployee);
-  checkInputs(newEmployee);
-  employeeList.push(newEmployee);
+  if (!checkInputs(newEmployee)) {
+    return;
+  } else {
+    employeeList.push(newEmployee);
+    console.log(newEmployee);
+  }
 }
 function checkInputs(newEmployee) {
   if (newEmployee.employeeId.length !== 4) {
     alert("Employee Numbers are 4 digits");
     return false;
-  }
-  if (isNaN(newEmployee.annualSalary) {
+  } else if (isNaN(newEmployee.annualSalary)) {
     alert("Salaries must be numbers");
     return false;
   }
