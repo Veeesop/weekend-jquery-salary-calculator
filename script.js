@@ -9,10 +9,11 @@ function getInputs() {
     title: $("#title").val(),
     annualSalary: Math.floor(Number($("#annualSalary").val())),
   };
-  if (!checkInputs(newEmployee)) {
+  if (checkInputs(newEmployee) === false) {
     return;
   } else {
     employeeList.push(newEmployee);
+    displayEmployee(newEmployee);
     console.log(newEmployee);
   }
 }
@@ -26,15 +27,14 @@ function checkInputs(newEmployee) {
   }
 }
 
-function displayEmployee(employeeList) {
-  for (employee of employeeList)
-    $(".employeeTable").append(`
+function displayEmployee(newEmployee) {
+  $(".employeeTable").append(`
     <tr>
-        <td>${employee.firstName}</td>
-        <td>${employee.lastName}</td>
-        <td>${employee.employeeId}</td>
-        <td>${employee.title}</td>
-        <td>${employee.annualSalary}</td>
+        <td>${newEmployee.firstName}</td>
+        <td>${newEmployee.lastName}</td>
+        <td>${newEmployee.employeeId}</td>
+        <td>${newEmployee.title}</td>
+        <td>${newEmployee.annualSalary}</td>
     </tr>
     `);
 }
@@ -47,11 +47,17 @@ function clearInputs() {
   $("#annualSalary").val("");
 }
 
+function totalMonthly(salaries) {
+  for (salary of salaries) {
+    console.log(salary.annualSalary);
+  }
+}
+
 $(document).ready(function () {
   console.log("ready!");
   $("#submitButton").on("click", () => {
     getInputs();
     clearInputs();
-    displayEmployee(employeeList);
+    totalMonthly(employeeList);
   });
 });
