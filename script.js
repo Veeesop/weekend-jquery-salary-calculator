@@ -1,5 +1,9 @@
 let totalMonthlyPayout;
-let employeeInput;
+let employeeList = [];
+
+function checkInputs(){
+    if  
+}
 
 function getInputs() {
   let newEmployee = {
@@ -10,16 +14,18 @@ function getInputs() {
     annualSalary: $("#annualSalary").val(),
   };
   console.log(newEmployee);
-  employeeInput = newEmployee;
+  employeeList.push(newEmployee);
 }
-function displayEmployee() {
-  $(".employeeTable").append(`
+
+function displayEmployee(employeeList) {
+  for (employee of employeeList)
+    $(".employeeTable").append(`
     <tr>
-        <td>${employeeInput.firstName}</td>
-        <td>${employeeInput.lastName}</td>
-        <td>${employeeInput.employeeId}</td>
-        <td>${employeeInput.title}</td>
-        <td>${employeeInput.annualSalary}</td>
+        <td>${employee.firstName}</td>
+        <td>${employee.lastName}</td>
+        <td>${employee.employeeId}</td>
+        <td>${employee.title}</td>
+        <td>${employee.annualSalary}</td>
     </tr>
     `);
 }
@@ -32,11 +38,13 @@ function clearInputs() {
   $("#annualSalary").val("");
 }
 
+
+
 $(document).ready(function () {
   console.log("ready!");
   $("#submitButton").on("click", () => {
     getInputs();
     clearInputs();
-    displayEmployee();
+    displayEmployee(employeeList);
   });
 });
