@@ -37,7 +37,7 @@ function displayEmployee(newEmployee) {
         <td class='employeeId'>${newEmployee.employeeId}</td>
         <td class='title'>${newEmployee.title}</td>
         <td class='annualSalary'>${newEmployee.annualSalary}</td>
-        <td class='trash'><button class='trash'><img src="icons8-trash-48.png" alt="" class='trash'></button></td>
+        <td class='trash'><button id='trash'><img src="icons8-trash-48.png" alt="" class='trash'></button></td>
     </tr>
     `);
 }
@@ -65,7 +65,11 @@ function turnRed() {
 }
 
 function removeEmployee() {
+  
+  for()
+  
   $(this).parent().remove();
+  testFunction();
 }
 function testFunction() {
   console.log("test success");
@@ -78,7 +82,8 @@ $(document).ready(function () {
     clearInputs();
     totalMonthly(employeeList);
     turnRed();
-    console.log("test");
   });
-  $(document).on("click", ".trash", removeEmployee);
+  $(document).on("click", "#trash", () => {
+    removeEmployee();
+  });
 });
