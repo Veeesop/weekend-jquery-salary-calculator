@@ -64,7 +64,7 @@ function totalMonthly(salaries) {
   if (totalMonthlyPayout > 20000) {
     $(".totalMonthlyAmount").css("background-color", "#ff1d1dbf");
   } else {
-    $(".totalMonthlyAmount").css("background-color", "none");
+    $(".totalMonthlyAmount").css("background-color", "rgb(153, 212, 237)");
   }
 }
 
@@ -75,8 +75,8 @@ function removeEmployee() {
     (employee) => employee.employeeId !== employeeRm
   );
   console.log(employeeList);
-  totalMonthly(employeeList);
   $(this).parent().remove();
+  totalMonthly(employeeList);
 }
 function testFunction() {
   console.log("test success");
