@@ -13,6 +13,7 @@ function getInputs() {
   } else {
     employeeList.push(newEmployee);
     displayEmployee(newEmployee);
+    clearInputs();
   }
 }
 function checkInputs(newEmployee) {
@@ -22,6 +23,12 @@ function checkInputs(newEmployee) {
   } else if (isNaN(newEmployee.annualSalary)) {
     alert("Salaries must be numbers");
     return false;
+  }
+  for (employee of employeeList) {
+    if (employee.employeeId === newEmployee.employeeId) {
+      alert("Employees cannot have the same ID");
+      return false;
+    }
   }
 }
 
@@ -79,7 +86,6 @@ $(document).ready(function () {
   console.log("ready!");
   $(document).on("click", "#submitButton", () => {
     getInputs();
-    clearInputs();
     totalMonthly(employeeList);
   });
   $(document).on("click", "#trash", removeEmployee);

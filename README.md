@@ -1,6 +1,6 @@
 # Salary Calculator
 
-Fill in inputs with employee first name, last name, employee ID number, their title and annual salary. Employee ID's are four digits.
+Fill in inputs with employee first name, last name, employee ID number, their title and annual salary. Employee ID's are four digits and cannot be the same as another employee.
 
 ## Description
 
