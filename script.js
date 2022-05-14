@@ -36,6 +36,7 @@ function displayEmployee(newEmployee) {
         <td>${newEmployee.employeeId}</td>
         <td>${newEmployee.title}</td>
         <td>${newEmployee.annualSalary}</td>
+        <td><img src="icons8-trash-48.png" alt="" class='trash'></td>
     </tr>
     `);
 }
@@ -53,8 +54,14 @@ function totalMonthly(salaries) {
     totalAnnual += salary.annualSalary;
     console.log(salary.annualSalary);
   }
-  totalMonthlyPayout = totalAnnual / 12;
-  $(".totalMonthlyAmount").text(`${totalMonthlyPayout}`);
+  totalMonthlyPayout = Math.floor(totalAnnual / 12);
+  $(".totalMonthlyAmount").text(`$${totalMonthlyPayout}`);
+}
+
+function turnRed() {
+  if (totalMonthlyPayout > 20000) {
+    $(".totalMonthlyAmount").css("background-color", "red");
+  }
 }
 
 $(document).ready(function () {
@@ -63,5 +70,8 @@ $(document).ready(function () {
     getInputs();
     clearInputs();
     totalMonthly(employeeList);
+    turnRed();
   });
 });
+
+$(document).on("click", ".newBox", removeBox);
