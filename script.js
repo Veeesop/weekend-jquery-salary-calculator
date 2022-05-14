@@ -35,7 +35,6 @@ function checkInputs(newEmployee) {
 function displayEmployee(newEmployee) {
   $(".employeeTable").append(`
     <tr class='employeeDisplay'>
-        ${newEmployee}
         <td class='firstName'>${newEmployee.firstName}</td>
         <td class='lastName'>${newEmployee.lastName}</td>
         <td class='employeeId'>${newEmployee.employeeId}</td>
@@ -78,6 +77,7 @@ function removeEmployee() {
   $(this).parent().remove();
   totalMonthly(employeeList);
 }
+
 function testFunction() {
   console.log("test success");
 }
