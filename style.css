@@ -1,19 +1,90 @@
-body{
 
-}
-
-.calculatorContainer{
-    margin: 0 auto;
-}
-
-.inputsContainer {
-    margin: 0 auto;
-}
-
-.submitButtonDiv{
+body {
+    font-family: 'Comfortaa', cursive;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(153, 212, 237);
+    
     
 }
 
-.submitButton{
+.employeeDisplayContainer {
+   margin:  0 auto;
+}
 
+.header {
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: -25px;
+}
+.inputsTitle{
+    text-align: start;
+    margin-bottom: -11px;;
+}
+
+table {
+    border-collapse: separate;
+    text-align: center;
+	vertical-align: middle;
+  }
+
+input {
+    justify-content: space-around;
+    border: 1px solid black;
+    margin: 8px;
+    height: 20px;
+    font-size: 17px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.inputs {
+    width: 1182px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    margin-bottom: 6px;
+}
+
+#submitButton {
+    background-color: #465698;
+    margin: 4px;
+    margin-left: 1019px;
+    margin-bottom: 29px;
+    width: 174px;
+    border: none;
+    height: 28px;
+    border-radius: 23px;
+    font-size: 20px;
+    color: white;
+    cursor:pointer;
+}
+
+.trash {
+    padding: 0px;
+    width: 43px;
+    height: 38px;
+    background: none;
+    border: none;
+    cursor:pointer;
+}
+
+
+th {
+    background-color: rgb(88 149 213);
+    color: rgb(251 255 255);
+    width: 184px;
+    font-size: 24px;
+    padding: 7px;
+    border-radius: 43px;
+    /* border: 1px solid rgb(0, 0, 0); */
+}
+
+td {
+    font-size: 20px;
+}
+
+.totalMonthlyAmount{
+    padding: 8px;
+    border-radius: 15px;
 }

@@ -55,9 +55,9 @@ function totalMonthly(salaries) {
   let totalMonthlyPayout = Math.floor(totalAnnual / 12);
   $(".totalMonthlyAmount").text(`$${totalMonthlyPayout}`);
   if (totalMonthlyPayout > 20000) {
-    $(".totalMonthlyAmount").css("background-color", "red");
+    $(".totalMonthlyAmount").css("background-color", "#ff1d1dbf");
   } else {
-    $(".totalMonthlyAmount").css("background-color", "white");
+    $(".totalMonthlyAmount").css("background-color", "none");
   }
 }
 
