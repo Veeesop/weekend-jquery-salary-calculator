@@ -1,5 +1,3 @@
-let totalAnnual = 0;
-let totalMonthlyPayout;
 let employeeList = [];
 
 function getInputs() {
@@ -15,8 +13,6 @@ function getInputs() {
   } else {
     employeeList.push(newEmployee);
     displayEmployee(newEmployee);
-    console.log(newEmployee);
-    newEmployee = {};
   }
 }
 function checkInputs(newEmployee) {
@@ -32,12 +28,13 @@ function checkInputs(newEmployee) {
 function displayEmployee(newEmployee) {
   $(".employeeTable").append(`
     <tr class='employeeDisplay'>
+        ${newEmployee}
         <td class='firstName'>${newEmployee.firstName}</td>
         <td class='lastName'>${newEmployee.lastName}</td>
         <td class='employeeId'>${newEmployee.employeeId}</td>
         <td class='title'>${newEmployee.title}</td>
         <td class='annualSalary'>${newEmployee.annualSalary}</td>
-        <td class='trash'><button id='trash'><img src="icons8-trash-48.png" alt="" class='trash'></button></td>
+        <td id='trash'><button class='trash'><img src="icons8-trash-48.png" alt="" class='trash'></button></td>
     </tr>
     `);
 }
@@ -51,25 +48,28 @@ function clearInputs() {
 }
 
 function totalMonthly(salaries) {
+  let totalAnnual = 0;
   for (salary of salaries) {
     totalAnnual += salary.annualSalary;
   }
-  totalMonthlyPayout = Math.floor(totalAnnual / 12);
+  let totalMonthlyPayout = Math.floor(totalAnnual / 12);
   $(".totalMonthlyAmount").text(`$${totalMonthlyPayout}`);
-}
-
-function turnRed() {
   if (totalMonthlyPayout > 20000) {
     $(".totalMonthlyAmount").css("background-color", "red");
+  } else {
+    $(".totalMonthlyAmount").css("background-color", "white");
   }
 }
 
 function removeEmployee() {
-  
-  for()
-  
+  let employeeRm = $(this).parent().children(".employeeId").text();
+  console.log(employeeRm);
+  employeeList = employeeList.filter(
+    (employee) => employee.employeeId !== employeeRm
+  );
+  console.log(employeeList);
+  totalMonthly(employeeList);
   $(this).parent().remove();
-  testFunction();
 }
 function testFunction() {
   console.log("test success");
@@ -81,9 +81,6 @@ $(document).ready(function () {
     getInputs();
     clearInputs();
     totalMonthly(employeeList);
-    turnRed();
   });
-  $(document).on("click", "#trash", () => {
-    removeEmployee();
-  });
+  $(document).on("click", "#trash", removeEmployee);
 });
