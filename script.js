@@ -53,7 +53,6 @@ function clearInputs() {
 function totalMonthly(salaries) {
   for (salary of salaries) {
     totalAnnual += salary.annualSalary;
-    console.log(salary.annualSalary);
   }
   totalMonthlyPayout = Math.floor(totalAnnual / 12);
   $(".totalMonthlyAmount").text(`$${totalMonthlyPayout}`);
@@ -66,21 +65,20 @@ function turnRed() {
 }
 
 function removeEmployee() {
-  let employeeId = $(".employeeId").text();
-  employeeList = employeeList.filter(
-    (employee) => employee.employeeId !== employeeId
-  );
-  totalMonthly(employeeList);
   $(this).parent().remove();
+}
+function testFunction() {
+  console.log("test success");
 }
 
 $(document).ready(function () {
   console.log("ready!");
-  $("#submitButton").on("click", () => {
+  $(document).on("click", "#submitButton", () => {
     getInputs();
     clearInputs();
     totalMonthly(employeeList);
     turnRed();
+    console.log("test");
   });
   $(document).on("click", ".trash", removeEmployee);
 });
