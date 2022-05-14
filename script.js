@@ -16,6 +16,7 @@ function getInputs() {
     employeeList.push(newEmployee);
     displayEmployee(newEmployee);
     console.log(newEmployee);
+    newEmployee = {};
   }
 }
 function checkInputs(newEmployee) {
@@ -30,13 +31,13 @@ function checkInputs(newEmployee) {
 
 function displayEmployee(newEmployee) {
   $(".employeeTable").append(`
-    <tr>
-        <td>${newEmployee.firstName}</td>
-        <td>${newEmployee.lastName}</td>
-        <td>${newEmployee.employeeId}</td>
-        <td>${newEmployee.title}</td>
-        <td>${newEmployee.annualSalary}</td>
-        <td><img src="icons8-trash-48.png" alt="" class='trash'></td>
+    <tr class='employeeDisplay'>
+        <td class='firstName'>${newEmployee.firstName}</td>
+        <td class='lastName'>${newEmployee.lastName}</td>
+        <td class='employeeId'>${newEmployee.employeeId}</td>
+        <td class='title'>${newEmployee.title}</td>
+        <td class='annualSalary'>${newEmployee.annualSalary}</td>
+        <td class='trash'><button class='trash'><img src="icons8-trash-48.png" alt="" class='trash'></button></td>
     </tr>
     `);
 }
@@ -64,6 +65,15 @@ function turnRed() {
   }
 }
 
+function removeEmployee() {
+  let employeeId = $(".employeeId").text();
+  employeeList = employeeList.filter(
+    (employee) => employee.employeeId !== employeeId
+  );
+  totalMonthly(employeeList);
+  $(this).parent().remove();
+}
+
 $(document).ready(function () {
   console.log("ready!");
   $("#submitButton").on("click", () => {
@@ -72,6 +82,5 @@ $(document).ready(function () {
     totalMonthly(employeeList);
     turnRed();
   });
+  $(document).on("click", ".trash", removeEmployee);
 });
-
-$(document).on("click", ".newBox", removeBox);
